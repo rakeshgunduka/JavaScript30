@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Console Tricks!</title>
+</head>
+<body>
+
+  <p onClick="makeGreen()">×BREAK×DOWN×</p>
+
+  <script>
+    const dogs = [{ name: 'Snickers', age: 2 }, { name: 'hugo', age: 8 }];
+
+    function makeGreen() {
+      const p = document.querySelector('p');
+      p.style.color = '#BADA55';
+      p.style.fontSize = '50px';
+    }
+
+    // Regular
+    console.log('Go to town');
+
+    // Interpolated
+    let a = 'DEV';
+    console.log('Hello I am a %s Dev', a);
+
+    // Styled
+    console.log('%c Some puffy text', 
+      'font-size: 50px; background: red; text-shadow: 10px 10px 0 blue');
+
+    // warning!
+    console.warn('OH Nooo');
+
+    // Error :|
+    console.error('Shit');
+
+    // Info
+    console.info('No info');
+
+    // Testing
+    const p = dcument.querySelector('p');
+    console.assert(p.classList.contains('ouch'), 'that is wrong!')
+    console.assert(1 === 1, 'That is wrong!');
+
+    // clearing
+    console.clear();
+
+    // Viewing DOM Elements
+    console.log(p);
+    console.dir(p);
+
+    // Grouping together
+    dogs.forEach(dog => {
+      console.group(`${dog.name}`);
+      console.log(`This is ${dog.name}`);
+      console.log(`${dog.name} is ${dog.age * 7} dog years`);
+      console.groupEnd(`${dog.name}`);
+    })
+
+    // counting
+    console.count('Counting');
+    console.count('Counting');
+    console.count('Counting second');
+    console.count('Counting');
+    console.count('Counting second');
+
+    // timing
+    console.time('Data is jumping');
+    fetch('https://api.github/users/rakeshgunduka')
+      .then(data => data.json())
+      .then(data => {
+        console.timeEnd('Data Dropped');
+        console.log(data);
+      });
+
+    console.table(dogs);
+  
+  </script>
+</body>
+</html>
